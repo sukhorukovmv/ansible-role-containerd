@@ -20,6 +20,7 @@ provisioner:
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
 
+
 scenario:
   test_sequence:
     - syntax
