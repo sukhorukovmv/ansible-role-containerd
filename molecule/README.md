@@ -53,12 +53,12 @@ pyenv versions
 
 Create virtual environment with pyenv:
 ```bash
-pyenv virtualenv 3.8.16 molecule-test
+pyenv virtualenv 3.8.16 molecule-test-containerd
 ```
 
 For activate and deactivate Virtual Environment:
 ```bash
-pyenv activate molecule-test 
+pyenv activate molecule-test-containerd
 pyenv deactivate # or if not working
 pyenv shell system
 ```
