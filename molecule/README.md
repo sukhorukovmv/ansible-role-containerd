@@ -66,7 +66,7 @@ pyenv shell system
 Delete Virtual Environment:
 ```bash
 pyenv versions
-pyenv uninstall 3.8.16/envs/molecule-test
+pyenv uninstall 3.8.16/envs/molecule-test-containerd
 ```
 
 ## Run molecule tests
