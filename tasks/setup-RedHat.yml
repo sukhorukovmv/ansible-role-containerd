@@ -13,7 +13,7 @@
     mode: 0644
 
 - name: Configure Docker Nightly repo.
-  ansible.builtin.ini_file:
+  community.general.ini_file:
     dest: '/etc/yum.repos.d/docker-ce.repo'
     section: 'docker-ce-nightly'
     option: enabled

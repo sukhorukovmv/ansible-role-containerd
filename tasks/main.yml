@@ -22,6 +22,7 @@
   ansible.builtin.file:
     path: /etc/containerd
     state: directory
+    mode: 0755
   register: containerd_dir
 
 - name: Get defaults from containerd.
@@ -34,6 +35,7 @@
   ansible.builtin.copy:
     dest: /tmp/containerd_config.toml
     content: "{{ containerd_config_default.stdout }}"
+    mode: 0755
   when: containerd_config_default_write
   changed_when: false
 
@@ -44,22 +46,26 @@
     state: present
     path: /tmp/containerd_config.toml
   when: containerd_config_default_write and containerd_config_cgroup_driver_systemd
+  changed_when: false
 
 - name: Make sure  SystemdCgroup = false is not set
   ansible.builtin.lineinfile:
     path: /tmp/containerd_config.toml
     state: absent
     line: '            SystemdCgroup = false'
-  notify: restart containerd
+  notify: Restart containerd
   when: containerd_config_default_write and containerd_config_cgroup_driver_systemd
+  changed_when: false
 
 - name: Copy config.toml to /etc/containerd
   ansible.builtin.copy:
     remote_src: true
     src: /tmp/containerd_config.toml
     dest: /etc/containerd/config.toml
-  notify: restart containerd
+    mode: 0755
+  notify: Restart containerd
   when: containerd_config_default_write
+  changed_when: false
 
 - name: Cleanup temporary file
   ansible.builtin.file:

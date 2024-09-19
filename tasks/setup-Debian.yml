@@ -15,13 +15,22 @@
   register: add_repository_key
   ignore_errors: "{{ docker_apt_ignore_key_error }}"
 
-- name: Ensure curl is present (on older systems without SNI).
-  ansible.builtin.package: name=curl state=present
+- name: Ensure curl is present (on older systems without SNI)
+  ansible.builtin.package:
+    name: curl
+    state: present
   when: add_repository_key is failed
 
-- name: Add Docker apt key (alternative for older systems without SNI).
-  ansible.builtin.shell: >
-    curl -sSL {{ docker_apt_gpg_key }} | sudo apt-key add -
+- name: Add Docker apt key (alternative for older systems without SNI)
+  ansible.builtin.get_url:
+    url: "{{ docker_apt_gpg_key }}"
+    dest: /tmp/docker-apt-key.asc
+    mode: 0644
+  when: add_repository_key is failed
+
+- name: Add Docker apt key (alternative for older systems without SNI)
+  ansible.builtin.apt_key:
+    file: /tmp/docker-apt-key.asc
   when: add_repository_key is failed
 
 - name: Add Docker repository.
