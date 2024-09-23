@@ -5,7 +5,7 @@ galaxy_info:
   role_name: containerd
   author: sukhorukovmv
   description: containerd.io for Linux.
-  license: "license (BSD, MIT)"
+  license: "MIT"
   min_ansible_version: "10.4.0"
   platforms:
     - name: Ubuntu
