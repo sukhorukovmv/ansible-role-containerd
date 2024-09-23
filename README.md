@@ -3,6 +3,7 @@
 [![CI](https://github.com/sukhorukovmv/ansible-role-containerd/workflows/CI/badge.svg)](https://github.com/sukhorukovmv/ansible-role-containerd/actions?query=workflow%CI)
 ![Release](https://img.shields.io/github/v/release/sukhorukovmv/ansible-role-containerd)
 ![Ansible Role](https://img.shields.io/ansible/role/d/sukhorukovmv/containerd)
+![License](https://img.shields.io/github/license/sukhorukovmv/ansible-role-containerd)
 
 An Ansible Role that installs [containerd](https://containerd.io) on Linux.
 
